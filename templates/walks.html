@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Love Walking</title>
+</head>
+<body>
+    {% for walk in walks %}
+        {{ walk.walk_title }}<br>
+        {{ walk.category_name }}<br>
+        {{ walk.category_name }}<br>
+        {{ walk.walk_description }}<br>
+        {{ walk.walk_length }}<br>
+        {{ walk.walk_age }}<br>
+        <img src="{{ walk.walk_img }}">
+        {{ walk.walk_img }}
+    {% endfor %}
+</body>
+</html>
