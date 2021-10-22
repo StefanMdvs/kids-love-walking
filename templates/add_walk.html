@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content%}
+<h3 class="center-align green-text text-darken-3">Add Walk</h3>
+
+<div class="row">
+    <form class="col s12" method="POST" action="">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix green-text text-darken-3">edit</i>
+                <input id="walk_title" name="walk_title" type="text" minlength="5" maxlength="50" 
+                    class="validate" required>
+                <label for="walk_title">Walk Title</label>
+                <span class="helper-text" data-error="Title too short" data-success="Alright here"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix green-text text-darken-3">description</i>
+                <textarea id="walk_description" name="walk_description" minlength="5" maxlength="200" 
+                    class="materialize-textarea validate" required></textarea>
+                <label for="walk_description">Walk description</label>
+                <span class="helper-text" data-error="Description too short" data-success="Alright here"></span>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
