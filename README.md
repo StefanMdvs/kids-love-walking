@@ -41,3 +41,17 @@ From a user's point of view the application should be intuitive and easy to use 
 
 ## 2.2 Wireframes
 Wireframes were created for every page, considering mobile, tablet and desktop views. Full size wireframes can be checked **[here](wireframes)**.
+## 2.3 Design
+The project uses Materialize framework and it's grid system that allows the project to be responsive across different devices.  
+### Colour scheme
+For simplicity the project uses Materialize's colour scheme, the following being chosen:
+- ![#388e3c](https://via.placeholder.com/15/388e3c/000000?text=+) #388e3c (green darken-2)
+- ![#e8f5e9](https://via.placeholder.com/15/e8f5e9/000000?text=+) #e8f5e9 (green lighten-5)
+- ![#ff8f00](https://via.placeholder.com/15/ff8f00/000000?text=+) #ff8f00 (amber darken-3)  
+
+
+ For Header, Footer and call to action buttons the colour being used is green darken-2, to represent the green found on walks most of the year. Also green lighten-5, a pale shade of green, is used as background for flashed messages and cards.   
+For Cancel/Delete buttons the colour chosen was amber darken-3, the colour of leaves in autumn, to represent a warning about the action to be made.
+
+### Font
+The font used is trying to suggest that the walks have a personal touch, being hand-written by the user, hence the cursive Google font *Architects Daughter* was chosen.
