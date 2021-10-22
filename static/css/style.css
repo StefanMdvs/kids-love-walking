@@ -16,6 +16,11 @@ nav .brand-logo {
     line-height: 2;
 }
 
+/* dropdown option */
+.select-wrapper input.select-dropdown {
+    font-family: 'Architects Daughter', cursive;
+}
+
 /* footer social links */
 .social li{
     display: inline-block;
