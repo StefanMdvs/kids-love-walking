@@ -55,3 +55,22 @@ For Cancel/Delete buttons the colour chosen was amber darken-3, the colour of le
 
 ### Font
 The font used is trying to suggest that the walks have a personal touch, being hand-written by the user, hence the cursive Google font *Architects Daughter* was chosen.
+
+## Technologies used
+### Languages
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Python](https://www.python.org/)
+  - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+### Frameworks
+- [Flask](https://palletsprojects.com/p/flask/)
+- [jQuery](https://jquery.com/)
+- [Materialize](https://materializecss.com/)
+### Project management
+- [Lucid](https://lucid.co/)
+- [GitHub](https://github.com/)
+- [GitPod](https://gitpod.io/)
+- [Heroku](https://www.heroku.com/about)
+- [MongoDB](https://www.mongodb.com/)
+
