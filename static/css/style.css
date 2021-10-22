@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+/* navigation and headers */
+
+h3, nav {
+    font-family: 'Architects Daughter', cursive;
+    font-weight: 400;
+}
+
 nav .brand-logo {
     font-size: 1.5rem;
 }
 
+/* flashed messages */
 .flashes h4 {
     line-height: 2;
 }
@@ -17,11 +27,14 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Architects Daughter', cursive;
+
 }
 
   main {
     flex: 1 0 auto;
 }
+
 
 @media only screen and (min-width: 540px) {
     nav .brand-logo {
