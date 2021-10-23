@@ -108,6 +108,7 @@ def add_walk():
         walk = {
             "walk_title": request.form.get("walk_title"),
             "walk_description": request.form.get("walk_description"),
+            "walk_facilities": request.form.getlist("walk_facilities"),
             "walk_length": request.form.get("walk_length"),
             "walk_age": request.form.get("walk_age"),
             "walk_image": request.form.get("walk_image"),
@@ -118,7 +119,10 @@ def add_walk():
         return redirect("get_walks")
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_walk.html", categories=categories, ages=ages)
+    facilities = mongo.db.facilities.find().sort("name", 1)
+    return render_template(
+        "add_walk.html", categories=categories, ages=ages,
+        facilities=facilities)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

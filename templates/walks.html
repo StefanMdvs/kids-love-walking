@@ -4,10 +4,11 @@
     <div class="row">
         {% for walk in walks %}
         <div class="col s12 m6 xl4">
-            <div class="card">
+            <div class="card hoverable">
               <div class="card-image">
-                <img src="{{ walk.walk_image }}">
-                
+                <a href="#">
+                  <img src="{{ walk.walk_image }}">
+                </a>
               </div>
               <div class="card-content">
                 <span class="card-title text-center">{{ walk.walk_title }}</span>
