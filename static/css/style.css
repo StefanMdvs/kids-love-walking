@@ -31,6 +31,16 @@ nav .brand-logo {
     padding: 0.5rem;
 }
 
+/*card and card image */
+.card {
+    border-radius: 5%;
+    overflow: hidden;
+}
+
+.card .card-image img {
+    height: 200px;
+}
+
 /* footer social links */
 .social li{
     display: inline-block;
