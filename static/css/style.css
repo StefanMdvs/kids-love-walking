@@ -21,6 +21,16 @@ nav .brand-logo {
     font-family: 'Architects Daughter', cursive;
 }
 
+/* form buttons */
+.form-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-btn {
+    padding: 0.5rem;
+}
+
 /* footer social links */
 .social li{
     display: inline-block;

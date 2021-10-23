@@ -97,10 +97,28 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_walk")
+@app.route("/add_walk", methods=["GET", "POST"])
 def add_walk():
+    ages = [
+        "2-4",
+        "4-6",
+        "6+"
+    ]
+    if request.method == "POST":
+        walk = {
+            "walk_title": request.form.get("walk_title"),
+            "walk_description": request.form.get("walk_description"),
+            "walk_length": request.form.get("walk_length"),
+            "walk_age": request.form.get("walk_age"),
+            "walk_image": request.form.get("walk_image"),
+            "shared_by": session["user"]
+        }
+        mongo.db.walks.insert_one(walk)
+        flash("You successfully added a walk!")
+        return redirect("get_walks")
+
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_walk.html", categories=categories)
+    return render_template("add_walk.html", categories=categories, ages=ages)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
