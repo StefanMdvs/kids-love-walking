@@ -6,7 +6,7 @@
         <div class="col s12 m6 xl4">
             <div class="card hoverable">
               <div class="card-image">
-                <a href="#">
+                <a href="{{ url_for('view_walk', walk_id=walk._id) }}">
                   <img src="{{ walk.walk_image }}">
                 </a>
               </div>

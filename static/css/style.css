@@ -41,6 +41,11 @@ nav .brand-logo {
     height: 200px;
 }
 
+/* view activity style */
+.flex-display {
+    display: flex;
+}
+
 /* footer social links */
 .social li{
     display: inline-block;

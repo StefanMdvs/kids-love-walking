@@ -124,6 +124,15 @@ def add_walk():
         "add_walk.html", categories=categories, ages=ages,
         facilities=facilities)
 
+
+@app.route("/view_walk/<walk_id>")
+def view_walk(walk_id):
+    walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
+    user = mongo.db.users.find_one({"username": walk["shared_by"]})
+
+    return render_template("view_walk.html", walk=walk, user=user)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
