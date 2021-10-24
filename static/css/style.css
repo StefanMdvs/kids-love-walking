@@ -49,7 +49,7 @@ img {
 /* view activity style */
 .flex-display {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 /* footer social links */
