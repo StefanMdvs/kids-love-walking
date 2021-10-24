@@ -16,6 +16,10 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+AGES = [
+        "2-4",
+        "4-6",
+        "6+"]
 
 @app.route("/")
 @app.route("/get_walks")
@@ -99,13 +103,10 @@ def logout():
 
 @app.route("/add_walk", methods=["GET", "POST"])
 def add_walk():
-    ages = [
-        "2-4",
-        "4-6",
-        "6+"
-    ]
+    
     if request.method == "POST":
         walk = {
+            "category_name": request.form.get("category_name"),
             "walk_title": request.form.get("walk_title"),
             "walk_description": request.form.get("walk_description"),
             "walk_facilities": list(request.form.getlist("walk_facilities")),
@@ -119,17 +120,21 @@ def add_walk():
         return redirect("get_walks")
 
     categories = mongo.db.categories.find().sort("category_name", 1)
+    facilities = mongo.db.facilities.find().sort("walk_facilities", 1)
     return render_template(
-        "add_walk.html", categories=categories, ages=ages)
+        "add_walk.html", categories=categories, ages=AGES,
+        facilities=facilities)
 
 
 @app.route("/edit_walk/<walk_id>")
 def edit_walk(walk_id):
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
 
+    facilities = mongo.db.facilities.find().sort("walk_facilities", 1)
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
-        "edit_walk.html", categories=categories, walk=walk)
+        "edit_walk.html", categories=categories, walk=walk,
+        facilities=facilities, ages=AGES)
 
 @app.route("/view_walk/<walk_id>")
 def view_walk(walk_id):
