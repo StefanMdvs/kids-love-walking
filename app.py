@@ -93,7 +93,7 @@ def profile(username):
 @app.route("/logout")
 def logout():
     flash("You are now logged out!")
-    session.pop("user")
+    session.clear()
     return redirect(url_for("login"))
 
 
@@ -108,7 +108,7 @@ def add_walk():
         walk = {
             "walk_title": request.form.get("walk_title"),
             "walk_description": request.form.get("walk_description"),
-            "walk_facilities": request.form.getlist("walk_facilities"),
+            "walk_facilities": list(request.form.getlist("walk_facilities")),
             "walk_length": request.form.get("walk_length"),
             "walk_age": request.form.get("walk_age"),
             "walk_image": request.form.get("walk_image"),
@@ -119,18 +119,26 @@ def add_walk():
         return redirect("get_walks")
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    facilities = mongo.db.facilities.find().sort("name", 1)
     return render_template(
-        "add_walk.html", categories=categories, ages=ages,
-        facilities=facilities)
+        "add_walk.html", categories=categories, ages=ages)
 
+
+@app.route("/edit_walk/<walk_id>")
+def edit_walk(walk_id):
+    walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template(
+        "edit_walk.html", categories=categories, walk=walk)
 
 @app.route("/view_walk/<walk_id>")
 def view_walk(walk_id):
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
     user = mongo.db.users.find_one({"username": walk["shared_by"]})
+    walks = mongo.db.walks.find()
 
-    return render_template("view_walk.html", walk=walk, user=user)
+    return render_template(
+        "view_walk.html", walk=walk, user=user, walks=walks)
 
 
 if __name__ == "__main__":

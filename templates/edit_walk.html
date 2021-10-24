@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content%}
+<h3 class="center-align green-text text-darken-3">Edit Walk</h3>
+
+<div class="row card-panel green lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('edit_walk', walk_id=walk._id) }}">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix green-text text-darken-3">folder_open</i>
+                <select id="category_name" name="category_name" class="validate" required>
+                    <option value="" disabled selected>Choose category</option>
+                    {% for category in categories %}
+                        <option value="{{category.category_name}}">{{category.category_name}}</option>
+                    {% endfor %}
+                </select>
+                <label for="category_name"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix green-text text-darken-3">edit</i>
+                <input id="walk_title" name="walk_title" type="text" minlength="5" maxlength="50" 
+                    class="validate" required>
+                <label for="walk_title">Walk Title</label>
+                <span class="helper-text" data-error="Title too short" data-success="Alright here"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix green-text text-darken-3">description</i>
+                <textarea id="walk_description" name="walk_description" minlength="5" maxlength="200" 
+                    class="materialize-textarea validate" required></textarea>
+                <label for="walk_description">Walk description</label>
+                <span class="helper-text" data-error="Description too short" data-success="Alright here"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons green-text text-darken-3">question_answer</i>
+                <select id="walk_facilities" name="walk_facilities" class="validate" multiple required>
+                  <option value="" disabled>Choose facilities</option>
+                  {% for fac in facilities %}
+                  <option value="{{ fac.walk_facilities }}">{{ fac.walk_facilities }}</option>
+                  {% endfor %}
+                </select>
+                <label for="walk_facilities"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-ruler-horizontal prefix green-text text-darken-3"></i>
+                <input id="walk_length" name="walk_length" type="text" minlength="5" maxlength="50" 
+                    class="validate" required>
+                <label for="walk_length">Walk Length</label>
+                <span class="helper-text" data-error="Title too short" data-success="Alright here"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-child prefix green-text text-darken-3"></i>
+                <select id="walk_age" name="walk_age" class="validate" required>
+                    <option value="" disabled selected>Walk Age</option>
+                    {% for age in ages %}
+                        <option value="{{age}}">{{age}}</option>
+                    {% endfor %}
+                </select>
+                <label for="walk_age"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="far fa-image prefix green-text text-darken-3"></i>
+                <input id="walk_image" name="walk_image" type="text" 
+                    class="validate">
+                <label for="walk_image">Walk Image</label>
+                <span class="helper-text" data-error="" data-success="Alright here">Insert link above</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 form-btn-container">
+                <div class="form-btn center-align">
+                    <a href="{{ url_for('view_walk', walk_id=walk._id) }}" class="btn red">Cancel <i class="material-icons right hide-on-small-only">cancel</i></a>
+                </div>
+                <div class="form-btn center-align">
+                    <a href="{{ url_for('edit_walk', walk_id=walk._id)}}" class="btn green darken-2">Edit
+                        <i class="material-icons right hide-on-small-only">edit</i>
+                    </a>
+                    
+                </div>
+            </div>
+            
+                
+                
+            
+            
+        </div>
+    </form>
+</div>
+{% endblock %}
