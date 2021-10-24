@@ -41,9 +41,15 @@ nav .brand-logo {
     height: 200px;
 }
 
+img {
+    border-style: none;
+    width: 100%;
+}
+
 /* view activity style */
 .flex-display {
     display: flex;
+    justify-content: space-between;
 }
 
 /* footer social links */
