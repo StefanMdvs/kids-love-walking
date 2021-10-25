@@ -52,6 +52,11 @@ img {
     justify-content: space-evenly;
 }
 
+/* categories page */
+.display-block {
+    display: block;
+}
+
 /* footer social links */
 .social li{
     display: inline-block;

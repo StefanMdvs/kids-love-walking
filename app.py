@@ -150,11 +150,13 @@ def edit_walk(walk_id):
         "edit_walk.html", categories=categories, walk=walk,
         facilities=facilities, ages=AGES)
 
+
 @app.route("/delete_walk/<walk_id>")
 def delete_walk(walk_id):
     mongo.db.walks.remove({"_id": ObjectId(walk_id)})
     flash ("Walk Deleted Successfully")
     return redirect(url_for("get_walks"))
+
 
 @app.route("/view_walk/<walk_id>")
 def view_walk(walk_id):
@@ -164,6 +166,12 @@ def view_walk(walk_id):
 
     return render_template(
         "view_walk.html", walk=walk, user=user, walks=walks)
+
+
+@app.route("/get_categories")
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories)
 
 
 if __name__ == "__main__":
