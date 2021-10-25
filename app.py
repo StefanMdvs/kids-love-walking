@@ -126,15 +126,35 @@ def add_walk():
         facilities=facilities)
 
 
-@app.route("/edit_walk/<walk_id>")
+@app.route("/edit_walk/<walk_id>", methods=["GET", "POST"])
 def edit_walk(walk_id):
-    walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "walk_title": request.form.get("walk_title"),
+            "walk_description": request.form.get("walk_description"),
+            "walk_facilities": list(request.form.getlist("walk_facilities")),
+            "walk_length": request.form.get("walk_length"),
+            "walk_age": request.form.get("walk_age"),
+            "walk_image": request.form.get("walk_image"),
+            "shared_by": session["user"]
+        }
+        mongo.db.walks.update_many(
+            {"_id": ObjectId(walk_id)}, {"$set": submit})
+        flash("Walk Successfully Updated")
 
+    walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
     facilities = mongo.db.facilities.find().sort("walk_facilities", 1)
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
         "edit_walk.html", categories=categories, walk=walk,
         facilities=facilities, ages=AGES)
+
+@app.route("/delete_walk/<walk_id>")
+def delete_walk(walk_id):
+    mongo.db.walks.remove({"_id": ObjectId(walk_id)})
+    flash ("Walk Deleted Successfully")
+    return redirect(url_for("get_walks"))
 
 @app.route("/view_walk/<walk_id>")
 def view_walk(walk_id):

@@ -8,11 +8,11 @@
                     <i class="fas fa-undo-alt left"></i> Back
                 </a>
             </div>
-            {% if session.user|lower == walk.shared_by %}
+            {% if session.user|lower == walk.shared_by|lower %}
             <div class="col s3 m2 l1 center-align">
-                <button class="btn-floating modal-trigger center-align hoverable">
-                    <i class="material-icons">delete_forever</i>
-                </button>
+                <a href="#deleteModal" class="btn-floating modal-trigger center-align hoverable">
+                   <i class="material-icons">delete_forever</i>
+                </a>
             </div>
             <div class="col s3 m2 l1 center-align">
                 <a href="{{ url_for('edit_walk', walk_id=walk._id)}}" class="btn-floating center-align hoverable">
@@ -52,7 +52,20 @@
                 
             </div>
         </div>
-        
-        
     </div>
+    <!-- modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+          <h4>Delete is forever!</h4>
+          <p>Do you wish to remove <b>{{walk.walk_title}}</b> from the website?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="{{ url_for('view_walk', walk_id=walk._id) }}" class="btn modal-close waves-effect waves green darken-2">Cancel
+                <i class="material-icons right">cancel</i>
+            </a>
+            <a href="{{ url_for('delete_walk', walk_id=walk._id) }}" class="btn modal-close waves-effect waves-green amber darken-3">Delete
+                <i class="material-icons right">delete_forever</i>
+            </a>
+        </div>
+      </div>
 {% endblock %}
