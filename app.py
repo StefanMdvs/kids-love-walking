@@ -191,9 +191,11 @@ def add_category():
 def edit_category(category_id):
     if request.method == "POST":
         submit = {
-            "category_name": request.form.get("category_name")
+            "category_name": request.form.get("category_name"),
+            "category_image": request.form.get("category_image")
         }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        mongo.db.categories.update(
+            {"_id": ObjectId(category_id)}, submit)
         flash("Category Updated!")
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
