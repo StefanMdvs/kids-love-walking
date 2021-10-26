@@ -139,7 +139,7 @@ def edit_walk(walk_id):
             "walk_image": request.form.get("walk_image"),
             "shared_by": session["user"]
         }
-        mongo.db.walks.update_many(
+        mongo.db.walks.update(
             {"_id": ObjectId(walk_id)}, {"$set": submit})
         flash("Walk Successfully Updated")
 
@@ -154,7 +154,7 @@ def edit_walk(walk_id):
 @app.route("/delete_walk/<walk_id>")
 def delete_walk(walk_id):
     mongo.db.walks.remove({"_id": ObjectId(walk_id)})
-    flash ("Walk Deleted Successfully")
+    flash("Walk Deleted Successfully")
     return redirect(url_for("get_walks"))
 
 
@@ -185,6 +185,19 @@ def add_category():
         return redirect(url_for("get_categories"))
 
     return render_template("add_category.html")
+
+
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Updated!")
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
 
 
 if __name__ == "__main__":
