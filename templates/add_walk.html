@@ -5,6 +5,7 @@
 <div class="row card-panel green lighten-5">
     <form class="col s12" method="POST" action="{{ url_for('add_walk') }}">
         <div class="row">
+            <!-- select category -->
             <div class="input-field col s12">
                 <i class="material-icons prefix green-text text-darken-3">folder_open</i>
                 <select id="category_name" name="category_name" class="validate" required>
@@ -17,6 +18,7 @@
             </div>
         </div>
         <div class="row">
+            <!-- walk title -->
             <div class="input-field col s12">
                 <i class="material-icons prefix green-text text-darken-3">edit</i>
                 <input id="walk_title" name="walk_title" type="text" minlength="5" maxlength="50" 
@@ -26,6 +28,7 @@
             </div>
         </div>
         <div class="row">
+            <!-- walk description -->
             <div class="input-field col s12">
                 <i class="material-icons prefix green-text text-darken-3">description</i>
                 <textarea id="walk_description" name="walk_description" minlength="5" maxlength="200" 
@@ -35,8 +38,9 @@
             </div>
         </div>
         <div class="row">
+            <!-- choose facilities -->
             <div class="input-field col s12">
-                <i class="material-icons green-text text-darken-3">question_answer</i>
+                <i class="material-icons prefix green-text text-darken-3">question_answer</i>
                 <select id="walk_facilities" name="walk_facilities" class="validate" multiple required>
                   <option value="" disabled>Choose facilities</option>
                   {% for fac in facilities %}
@@ -47,6 +51,7 @@
             </div>
         </div>
         <div class="row">
+            <!-- walk length -->
             <div class="input-field col s12">
                 <i class="fas fa-ruler-horizontal prefix green-text text-darken-3"></i>
                 <input id="walk_length" name="walk_length" type="text" minlength="5" maxlength="50" 
@@ -56,6 +61,7 @@
             </div>
         </div>
         <div class="row">
+            <!-- walk age -->
             <div class="input-field col s12">
                 <i class="fas fa-child prefix green-text text-darken-3"></i>
                 <select id="walk_age" name="walk_age" class="validate" required>
@@ -68,6 +74,7 @@
             </div>
         </div>
         <div class="row">
+            <!-- walk image -->
             <div class="input-field col s12">
                 <i class="far fa-image prefix green-text text-darken-3"></i>
                 <input id="walk_image" name="walk_image" type="text" 
@@ -77,6 +84,7 @@
             </div>
         </div>
         <div class="row">
+            <!-- submit/cancel -->
             <div class="col s12 form-btn-container">
                 <div class="form-btn center-align">
                     <a href="#" class="btn red">Cancel <i class="material-icons right hide-on-small-only">cancel</i></a>
