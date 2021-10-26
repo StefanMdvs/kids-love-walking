@@ -178,8 +178,10 @@ def get_categories():
 def add_category():
     if request.method == "POST":
         category = {
-            "category_name": request.form.get("category_name")
+            "category_name": request.form.get("category_name"),
+            "category_image": request.form.get("category_image")
         }
+        
         mongo.db.categories.insert_one(category)
         flash("Category Added!")
         return redirect(url_for("get_categories"))
@@ -194,6 +196,8 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name"),
             "category_image": request.form.get("category_image")
         }
+        if request.files["image_file"].filename == "":
+            submit["category_image"] = "https://en.wikipedia.org/wiki/Smiley#/media/File:SNice.svg"
         mongo.db.categories.update(
             {"_id": ObjectId(category_id)}, submit)
         flash("Category Updated!")
@@ -201,6 +205,13 @@ def edit_category(category_id):
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
+
+@app.route("/delete_category/<category_id>")
+def delete_category(category_id):
+    
+    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    flash("Category Deleted Successfully")
+    return redirect(url_for("get_categories"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
