@@ -21,14 +21,21 @@ AGES = [
         "4-6",
         "6+"]
 
-@app.route("/")
+
 @app.route("/get_walks")
 def get_walks():
     """
     Get the walks from the database
     """
-    walks = mongo.db.walks.find()
+    walks = list(mongo.db.walks.find())
     return render_template("walks.html", walks=walks)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    walks = list(mongo.db.walks.find({"$text": {"$search": query}}))
+    return render_template("walks.html", walks = walks)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -64,13 +71,12 @@ def login():
 
         if existing_user:
             # check hashed password matches user input
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}!".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+            if check_password_hash(existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}!".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # if password does not match
                 flash("Incorrect Username and/or Password")
@@ -208,10 +214,11 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
-    
+
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Deleted Successfully")
     return redirect(url_for("get_categories"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

@@ -1,6 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
+  <h3 class="center-align green-text text-darken-3">Walks to enjoy</h3>
+  <!-- search field -->
+  <div class="row card-panel green lighten-5">
+    <form action="{{ url_for('search') }}" method="post" class="col s12">
+      <div class="row valign-wrapper center-align">
+        <div class="input-field col s12 m8">
+          <i class="material-icons green-text darken-2 prefix">search</i>
+          <input type="text" name="query" id="query" class="validate" minlength="3" required>
+          <label for="query">Search Walks</label>
+        </div>
+        <div class="col s12 m4">
+          <a href="{{ url_for('get_walks') }}" class="amber darken-3 black-text btn">
+            <i class="material-icons right">restart_alt</i>
+            Restart
+          </a>
+          <button type="submit" class="btn green darken-3">
+          <i class="material-icons right">search</i>
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
     
+  {% if walks|length > 0 %}
     <div class="row">
         {% for walk in walks %}
         <div class="col s12 m6 xl4">
@@ -23,7 +47,17 @@
           </div>
         {% endfor %}
     </div>
-    
-    
+  {% else %}
+    <h3 class="center-align green-text text-darken-3">No walks found!</h3>
+      {% if session.user %}
+        <p class="center-align">You can share your favourite 
+          <a href="{{ url_for('add_walk') }}" class="green-text text-darken-2">here</a>
+        </p>
+        {% else %}
+        <p class="center-align">You can 
+          <a href="{{ url_for('login') }}" class="green-text text-darken-2">log in</a> and add your favourite!
+        </p>
+      {% endif %}
+  {% endif %}
 {% endblock %}
 
