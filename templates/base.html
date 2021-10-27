@@ -41,19 +41,19 @@
         </nav>
         <!-- Mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
-            <h3 class="center-align green-darken-2">Kids Love Walking</h3>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('get_walks' )}}">Walks</a></li>
+            <h3 class="center-align green-text text-darken-3">Kids Love Walking</h3>
+            <li><a href="{{ url_for('home') }}" class="amber-text text-darken-3">Home</a></li>
+                <li><a href="{{ url_for('get_walks' )}}" class="amber-text text-darken-3">Walks</a></li>
                 {% if session.user %}
                     {% if session.user|lower == "admin"|lower %}
-                        <li><a href="{{ url_for('get_categories' )}}">Categories</a></li>
+                        <li><a href="{{ url_for('get_categories' )}}" class="amber-text text-darken-3">Categories</a></li>
                     {% endif %}
-                    <li><a href="{{ url_for('profile', username=session['user'] )}}">Profile</a></li>
-                    <li><a href="{{ url_for('add_walk' )}}">New Walk</a></li>
-                    <li><a href="{{ url_for('logout' )}}">Log Out</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user'] )}}" class="amber-text text-darken-3">Profile</a></li>
+                    <li><a href="{{ url_for('add_walk' )}}" class="amber-text text-darken-3">New Walk</a></li>
+                    <li><a href="{{ url_for('logout' )}}" class="amber-text text-darken-3">Log Out</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('login' )}}">Log In</a></li>
-                    <li><a href="{{ url_for('register' )}}">Register</a></li>
+                    <li><a href="{{ url_for('login' )}}" class="amber-text text-darken-3">Log In</a></li>
+                    <li><a href="{{ url_for('register' )}}" class="amber-text text-darken-3">Register</a></li>
                 {% endif%}
         </ul>
     </header>
