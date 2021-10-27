@@ -22,6 +22,13 @@ AGES = [
         "6+"]
 
 
+@app.route("/")
+@app.route("/home")
+def home():
+    walks = list(mongo.db.walks.find().sort("_id", -1))
+    return render_template("home.html", walks=walks)
+
+
 @app.route("/get_walks")
 def get_walks():
     """

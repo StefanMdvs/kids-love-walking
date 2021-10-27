@@ -23,7 +23,7 @@
                 <a href="{{ url_for('get_walks' )}}" class="brand-logo">Kids Love Walking</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('get_walks' )}}">Walks</a></li>
                     {% if session.user %}
                         {% if session.user|lower == "admin"|lower %}
@@ -42,7 +42,7 @@
         <!-- Mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <h3 class="center-align green-darken-2">Kids Love Walking</h3>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('get_walks' )}}">Walks</a></li>
                 {% if session.user %}
                     {% if session.user|lower == "admin"|lower %}

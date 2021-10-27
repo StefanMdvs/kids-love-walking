@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container">
+    <div class="center">
+        <img src="https://image.freepik.com/free-vector/happy-active-family-walking-outdoors_74855-5259.jpg" 
+            alt="happy active family walking outdoors">
+    </div>
+    <section>
+        <div class="row center">
+            <div class="col s12">
+                <h3 class="green-text text-darken-3">Let's go walking!</h3>
+                <p class="flow-text">
+                    Looking for inspiration? You are in the right place.
+                </p>
+            </div>
+        </div>
+        <div class="row center">
+            <p class="flow-text">
+                <a href="{{ url_for('get_walks') }}" class="green-text text-darken-3">Browse</a>  all the walks or have a look at the latest added.
+            </p>
+        </div>
+        <div class="row">
+            {% for walk in walks %}
+            <div class="col s12 m6 xl4">
+                <div class="card hoverable">
+                    <div class="card-image">
+                      <a href="{{ url_for('view_walk', walk_id=walk._id) }}">
+                        <img src="{{ walk.walk_image }}">
+                      </a>
+                    </div>
+                    <div class="card-content">
+                      <span class="truncate card-title text-center">{{ walk.walk_title }}</span>
+                      <p class="truncate">{{ walk.walk_description }}</p>
+                    </div>
+                    <div class="card-action">
+                      <span><i class="fas fa-ruler-horizontal green-text text-darken-2"> {{ walk.walk_length }}</i></span>
+                      <span><i class="fas fa-child green-text text-darken-2 right"> {{ walk.walk_age }}</i></span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row center">
+            <p class="flow-text">
+                Feeling inspired?
+                {% if session.user %}
+                <a href="{{ url_for('add_walk') }}" class="green-text text-darken-3">Share</a> your favourites.
+                {% else %}
+                <a href="{{ url_for('register') }}" class="green-text text-darken-3">Register</a> to share your favourites.
+                {% endif %}
+            </p>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
