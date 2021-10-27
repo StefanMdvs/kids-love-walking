@@ -36,7 +36,7 @@ def get_walks():
     Get the walks from the database
     """
     walks = list(mongo.db.walks.find())
-    
+
     return render_template("walks.html", walks=walks)
 
 
@@ -80,7 +80,8 @@ def login():
 
         if existing_user:
             # check hashed password matches user input
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}!".format(
                     request.form.get("username")))
@@ -104,7 +105,9 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        walks = mongo.db.walks.find({"shared_by": session["user"]})
+
+        return render_template("profile.html", username=username, walks=walks)
 
     return redirect(url_for("login"))
 

@@ -12,6 +12,28 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        {% for walk in walks %}
+        <div class="col s12 m6 xl4">
+            <div class="card hoverable">
+              <div class="card-image">
+                <a href="{{ url_for('view_walk', walk_id=walk._id) }}">
+                  <img src="{{ walk.walk_image }}">
+                </a>
+              </div>
+              <div class="card-content">
+                <span class="card-title text-center">{{ walk.walk_title }}</span>
+                <p class="truncate">{{ walk.walk_description }}</p>
+                <p><em>Shared by: {{ walk.shared_by }}</em></p>
+              </div>
+              <div class="card-action">
+                <a href="#"><i class="fas fa-ruler-horizontal green-text text-darken-2"> {{ walk.walk_length }}</i></a>
+                <a href="#"><i class="fas fa-child green-text text-darken-2 right"> {{ walk.walk_age }}</i></a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
 
     
 {% endblock %}
