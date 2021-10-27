@@ -17,6 +17,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 AGES = [
+        "< 2",
         "2-4",
         "4-6",
         "6+"]
@@ -35,6 +36,7 @@ def get_walks():
     Get the walks from the database
     """
     walks = list(mongo.db.walks.find())
+    
     return render_template("walks.html", walks=walks)
 
 
@@ -42,7 +44,7 @@ def get_walks():
 def search():
     query = request.form.get("query")
     walks = list(mongo.db.walks.find({"$text": {"$search": query}}))
-    return render_template("walks.html", walks = walks)
+    return render_template("walks.html", walks=walks)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -190,11 +192,12 @@ def get_categories():
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     if request.method == "POST":
+
         category = {
             "category_name": request.form.get("category_name"),
             "category_image": request.form.get("category_image")
         }
-        
+
         mongo.db.categories.insert_one(category)
         flash("Category Added!")
         return redirect(url_for("get_categories"))
@@ -209,9 +212,7 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name"),
             "category_image": request.form.get("category_image")
         }
-        if request.files["image_file"].filename == "":
-            submit["category_image"] = "https://en.wikipedia.org/wiki/Smiley#/media/File:SNice.svg"
-        mongo.db.categories.update(
+        mongo.db.categories.update_one(
             {"_id": ObjectId(category_id)}, submit)
         flash("Category Updated!")
 
