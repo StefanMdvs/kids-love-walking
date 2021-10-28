@@ -80,8 +80,8 @@ def login():
 
         if existing_user:
             # check hashed password matches user input
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user["password"],
+               request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}!".format(
                     request.form.get("username")))
@@ -121,7 +121,7 @@ def logout():
 
 @app.route("/add_walk", methods=["GET", "POST"])
 def add_walk():
-    
+
     if request.method == "POST":
         walk = {
             "category_name": request.form.get("category_name"),
