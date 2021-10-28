@@ -22,7 +22,17 @@
     - Users can search for a walk by walk name and/or description
     - When pressing *Reset*, page displays all walks again
     - If no walks matching searching criteria were found, a message displays letting the user know
-    
+- ### Register Page
+    - User needs to fill in the Username and Password, both requiring a minimum/maximum amount of characters
+- ### Log In Page
+    - If no user matching the input was found in db or password doesn't match, the user get's a message displayed
+- ### Log Out
+    - When logging out the user is removed from the session cookie and user is being notified via a flash message
+- ### Add walk/Edit walk
+    - All fields are required except the image field. If image field is empty, a default image will be provided
+    - *Category*, *Facilities* and *Age* field have dropdowns that are validated accordingly
+    - When *Cancel* is clicked, the user is redirected to *Walks* page
+
 - ### Redirect user
     - After user logs in/register, the page redirects to *Profile* page that displays user's walks
     - After logging out, user is redirected to *Log In* page
@@ -35,6 +45,13 @@
     - the Back button sends user to *Walks* page
 - ### Detailed cards
     - when clicked show information about the walk, and if user is in session then the *Delete* and *Edit* buttons are displayed
+
+# 2. Validators
+The code was validated using [W3C](https://validator.w3.org/) services, [JSHint](https://jshint.com/) for JavaScript file and [PEP8](http://pep8online.com/) online for Python code.
+- HTML validator returned several semantic errors that have been fixed
+- CSS validator returned two errors, one related to Font Awesome stylesheet and the other related to Materialize
+- JS returns no error
+- Python code returns no error.
 
 
 
