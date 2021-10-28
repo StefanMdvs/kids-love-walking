@@ -125,14 +125,28 @@ os.environ.setdefault("MONGO_DBNAME", "<db_name>")
 
 ### **Deploying to Heroku**
 The app was deployed to Heroku from its GitHub repository using the following steps:  
-
-1. Create *requirements.txt* and *Procfile*:   
+1. Create *requirements.txt* and *Procfile*:  
 ```pip3 freeze --local > requirements.txt```   
 ```echo web: python app.py > Procfile```   
+*If other dependencies are added to the project at a later development stage, it is important to update the **requirements.txt** file, using the same command stated above.* 
 
-*If other dependencies are added to the project at a later development stage, it is important to update the **requirements.txt** file, using the same command stated above.*   
 2. Push these files to GitHub  
 3. Log In to Heroku  
 4. Select Create new app from the dropdown in the Heroku dashboard  
 5. Choose a name that must be unique and the location closest to you  
 6. Go to the Deploy tab and under Deployment method choose GitHub  
+7. In Connect to GitHub enter your GitHub repository details and once found, click Connect
+8. Go to the Settings tab and under Config Vars choose Reveal Config Vars
+9. Enter the following keys and values, which must match those in the env.py file created earlier:  
+
+| Key          | Value                                                                                                        |
+|--------------|--------------------------------------------------------------------------------------------------------------|
+| IP           | 0.0.0.0                                                                                                      |
+| PORT         | 5000                                                                                                         |
+| SECRET_KEY   | <your_app_secret_key                                                                                         |
+| MONGO_URI    | mongodb+srv:// <username> :@ <cluster_name> -ofgqg.mongodb.net/ <database_name> ?retryWrites=true&w=majority |
+| MONGO_DBNAME | <db_name>                                                                                                    |
+  
+10. Go to Deploy tab and under Automatic deploys choose Enable Automatic Deploys
+11. Under Manual deploy, select master and click Deploy Branch
+12. After the app has finished building, click Open app from the header row of the dashboard.
