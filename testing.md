@@ -1,10 +1,9 @@
 ## Index
 [**1. Functionality**](#1-functionality)  
-[**2. Validators**](#2-validators)  
-[**3. Compatibility**](#3-compatibility) 
-[**4. Performance**](#4-performance) 
-[**5. User stories**](#5-user-stories) 
-[**6. Bugs**](#6-bugs) 
+[**2. Validators**](#2-validators)    
+[**3. Performance**](#3-performance)  
+[**4. User stories**](#4-user-stories)  
+[**5. Bugs**](#5-bugs)  
 
 # 1. Functionality
 - ### Navigation  
@@ -53,13 +52,53 @@ The code was validated using [W3C](https://validator.w3.org/) services, [JSHint]
 - JS returns no error
 - Python code returns no error.
 
+# 3. Performance
+Automated testing was performed using Chrome Dev Tools - Lighthouse:  
+**Mobile page**  
+    - Performance: 88%  
+    - Accessibility: 94%  
+    - Best Practices: 80%  
+    - SEO: 92%  
+
+**Dektop Page**
+    - Performance: 93%  
+    - Accessibility: 94%  
+    - Best Practices: 80%  
+    - SEO: 90%  
+
+**Browsers**
+The app was tested on:
+    - Google Chrome
+    - Samsung Internet
+    - Amazon Silk  
+**Screen sizes**
+Using Chrome Dev Tools the app had been tested for all profiles displayed, from Moto G4 to Nest Hub Max.  
+The app had also been tested on:
+- Samsung S6
+- iPhone 6
+- Amazon Fire 10
+- Dell Laptop
+
+# 4. User stories
+**First time visitor**
+>&rarr;User is able to find relevant information about walks
+>
+User is presented with a short selection of walks starting with the Home Page, furthermore clicking on a specific walk opens up a card with details about it, a picture, facilities and age suitability. Information is tructured in a way that it is relevant separating the fields and   being visual appealing due to the image being present.  
+
+>&rarr; User can filter information using a search field
+>
 
 
+&rarr; User can register easily
+**Returning visitor**
+&rarr; User can see last added walks
+&rarr; User can log in/log-out
+&rarr; User can add their favourite walks
+&rarr; User can see their contribution in Profile section
+&rarr; User can edit/delete their contribution
+Site owner
+&rarr; Admin can add/remove categories
 
-
-
-
-
-# 6. Bugs
+# 5. Bugs
 -   When clicking on nav logo the user is redirected to *Walks* page
     - Bug has been fixed by changing the url.
