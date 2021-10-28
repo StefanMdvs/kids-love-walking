@@ -13,7 +13,7 @@
 
 [**3. Features**](#3-features) 
 - [3.1 Existing features](#31-existing-features)  
-- [3.2 To add](#32-to-add)  
+- [3.2 Features to add](#32-features-to-add)  
 
 [**4. Technologies used**](#4-technologies-used)  
 [**5. Testing**](#5-testing)  
@@ -55,8 +55,31 @@ For Cancel/Delete buttons the colour chosen was amber darken-3, the colour of le
 
 ### Font
 The font used is trying to suggest that the walks have a personal touch, being hand-written by the user, hence the cursive Google font *Architects Daughter* was chosen.
-
-## Technologies used
+## 3. Features
+### 3.1 Existing features  
+The app makes use of the following features:
+### **Material design and its features:**
+- Cards
+- Forms
+- Modal
+- Sidenav
+### **Register and Login**
+- Werkzeug security was used to store user's hashed password.
+### **CRUD functionality**
+New visitors have access to the *walks* collection whilst registered users can:
+- Add new walk
+- Edit their own additions
+- Delete their own additions.
+The admin can also add/edit/delete categories in the collection.  
+### **User profile**
+Registered users get access to their own walks in the *Profile* page, making editing/deleting process easier.
+### **Defensing Programming**
+To prevent accidental deletion of walks, users are asked to confirm again before deleting, through a modal pop-up.
+### 3.2 Features to add
+- Comments for individual walks
+- Option to add user profile picture
+- Option to save favourite walks
+## 4. Technologies used
 ### Languages
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
