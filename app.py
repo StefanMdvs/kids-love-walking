@@ -23,6 +23,7 @@ AGES = [
         "6+"]
 
 
+
 @app.route("/")
 @app.route("/home")
 def home():
@@ -133,6 +134,9 @@ def add_walk():
             "walk_image": request.form.get("walk_image"),
             "shared_by": session["user"]
         }
+        if walk["walk_image"] == "":
+            walk["walk_image"] = url_for(
+                'static', filename='images/child-walking-dog-nature.jpg')
         mongo.db.walks.insert_one(walk)
         flash("You successfully added a walk!")
         return redirect("get_walks")
@@ -200,7 +204,9 @@ def add_category():
             "category_name": request.form.get("category_name"),
             "category_image": request.form.get("category_image")
         }
-
+        if category["category_image"] == "":
+            category["category_image"] = url_for(
+                'static', filename='images/child-walking-dog-nature.jpg')
         mongo.db.categories.insert_one(category)
         flash("Category Added!")
         return redirect(url_for("get_categories"))
