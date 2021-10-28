@@ -23,7 +23,6 @@ AGES = [
         "6+"]
 
 
-
 @app.route("/")
 @app.route("/home")
 def home():
@@ -58,11 +57,11 @@ def register():
             flash("Username already in use")
             return redirect(url_for("register"))
 
-        register = {
+        new_user = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(new_user)
 
         # get user into session cookie
         session["user"] = request.form.get("username").lower()
@@ -221,7 +220,7 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name"),
             "category_image": request.form.get("category_image")
         }
-        mongo.db.categories.update_one(
+        mongo.db.categories.update(
             {"_id": ObjectId(category_id)}, submit)
         flash("Category Updated!")
 
