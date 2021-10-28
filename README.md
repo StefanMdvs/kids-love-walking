@@ -97,3 +97,42 @@ To prevent accidental deletion of walks, users are asked to confirm again before
 - [Heroku](https://www.heroku.com/about)
 - [MongoDB](https://www.mongodb.com/)
 
+## 5. Testing
+## 6. Deployment
+### **Cloning Kids Love Walking**
+The project used the [Code Institute's template](https://github.com/Code-Institute-Org/gitpod-full-template) to create a GitHub repository and then all other code was created in [Gitpod](https://www.gitpod.io/) and pushed into GitHub using the Terminal and the following commands:  
+- ```git add```, to stage files to be commited;
+- ```git push```, to upload content. 
+
+To clone this project, go to its [repository](https://github.com/StefanMdvs/kids-love-walking):
+1. Click on the "Code" button and select how to clone it: using HTTPS, SSH or GitHub CLI;
+2. Click on the copy icon to the right
+3. From a terminal window, change to the local directory where you want to clone your repository
+4. Use ```git clone``` and paste in the command you copied before
+5. Press Enter and a local clone will be created
+6. Create env.py file that will hold your app's environment variables, which should contain the following:
+```
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "your_app__secret_key")
+os.environ.setdefault("MONGO_URI", "mongodb+srv://<username>:<password>@<cluster_name>.uhrbq.mongodb.net/<db_name>?retryWrites=true&w=majority")
+os.environ.setdefault("MONGO_DBNAME", "<db_name>")
+```
+7. Before the first commit check that your ```env.py``` is listed in .gitignore file to prevent any sensitive information being pushed publicly.
+8. Run the app locally by using: ```python3 app.py```.
+
+### **Deploying to Heroku**
+The app was deployed to Heroku from its GitHub repository using the following steps:  
+
+1. Create *requirements.txt* and *Procfile*:   
+```pip3 freeze --local > requirements.txt```   
+```echo web: python app.py > Procfile```   
+
+*If other dependencies are added to the project at a later development stage, it is important to update the **requirements.txt** file, using the same command stated above.*   
+2. Push these files to GitHub  
+3. Log In to Heroku  
+4. Select Create new app from the dropdown in the Heroku dashboard  
+5. Choose a name that must be unique and the location closest to you  
+6. Go to the Deploy tab and under Deployment method choose GitHub  
