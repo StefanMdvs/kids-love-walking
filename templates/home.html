@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="container">
-    <div class="center">
+
+    <section class="center">
         <img src="https://image.freepik.com/free-vector/happy-active-family-walking-outdoors_74855-5259.jpg" 
             alt="happy active family walking outdoors">
-    </div>
+    </section>
     <section>
         <div class="row center">
             <div class="col s12">
@@ -27,7 +27,7 @@
                 <div class="card hoverable">
                     <div class="card-image">
                       <a href="{{ url_for('view_walk', walk_id=walk._id) }}">
-                        <img src="{{ walk.walk_image }}">
+                        <img src="{{ walk.walk_image }}" alt="{{ walk.walk.title }}">
                       </a>
                     </div>
                     <div class="card-content">
@@ -54,6 +54,6 @@
             </p>
         </div>
     </section>
-</main>
+
 
 {% endblock %}
