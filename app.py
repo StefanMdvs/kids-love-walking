@@ -160,9 +160,11 @@ def edit_walk(walk_id):
             "walk_image": request.form.get("walk_image"),
             "shared_by": session["user"]
         }
-        mongo.db.walks.update(
+
+        mongo.db.walks.update_one(
             {"_id": ObjectId(walk_id)}, {"$set": submit})
         flash("Walk Successfully Updated")
+        return redirect(url_for("get_walks"))
 
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
     facilities = mongo.db.facilities.find().sort("walk_facilities", 1)
@@ -223,6 +225,7 @@ def edit_category(category_id):
         mongo.db.categories.update(
             {"_id": ObjectId(category_id)}, submit)
         flash("Category Updated!")
+        return redirect(url_for("get_categories"))
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
