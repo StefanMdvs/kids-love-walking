@@ -1,10 +1,11 @@
 # Kids Love Walking
-
+![mockup image](static/images/mockup.png)
+*An app where users can explore and share their own favourite walks.*
 
 **[Live demo](https://kids-love-walking.herokuapp.com/get_walks)**
 
 ---
-[## Index](#up)
+[**Index**](#up)  
 [**1. Overview**](#1-overview)  
 [**2. UX**](#2-ux)  
 - [2.1 User Stories](#21-user-stories)  
@@ -165,7 +166,7 @@ The app was deployed to Heroku from its GitHub repository using the following st
   - Favicon image is from [Freepik](https://www.freepik.com).
   
   **Acknowledgements**  
-  - Spencer Barriball for his knowkedge and availability
+  - My mentor, Spencer Barriball for his knowkedge and availability
   - Code Institute Tutor Ed for his input with my update bug
   - Fellow student Dan Otter for his eagle eye and spotting the error in my edit_walk page.
   
