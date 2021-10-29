@@ -8,15 +8,15 @@
         <div class="input-field col s12 m8">
           <i class="material-icons green-text darken-2 prefix">search</i>
           <input type="text" name="query" id="query" class="validate" minlength="3" required>
-          <label for="query">Search Walks</label>
+          <label for="query">Search</label>
         </div>
         <div class="col s12 m4">
           <a href="{{ url_for('get_walks') }}" class="amber darken-3 black-text btn">
-            <i class="material-icons right">restart_alt</i>
+            <i class="material-icons right hide-on-small-only">restart_alt</i>
             Restart
           </a>
           <button type="submit" class="btn green darken-3">
-          <i class="material-icons right">search</i>
+          <i class="material-icons right hide-on-small-only">search</i>
             Search
           </button>
         </div>
