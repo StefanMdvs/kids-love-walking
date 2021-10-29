@@ -87,18 +87,39 @@ User is presented with a short selection of walks starting with the Home Page, f
 
 >&rarr; User can filter information using a search field
 >
+On entering a query in the search field, relevant walks containing the string are displayed.
+>&rarr; User can register easily
+>
+User is guided to Register starting with home page and Register navigation link is visibly displayed and the register process requires only two fields, username and password.
 
-
-&rarr; User can register easily
 **Returning visitor**
-&rarr; User can see last added walks
-&rarr; User can log in/log-out
-&rarr; User can add their favourite walks
-&rarr; User can see their contribution in Profile section
-&rarr; User can edit/delete their contribution
+>&rarr; User can see last added walks
+>
+When landing on *Home* Page user can see the latest added walks as the last three are displayed here.
+
+>&rarr; User can log in/log-out
+>
+Navigation tabs are visible and have been tested for functionality.
+
+>&rarr; User can add their favourite walks
+>
+*New Walk* page allows user to share their favourite walk. User need to be registered and logged in to be able to do so. 
+
+>&rarr; User can see their contribution in Profile section
+>
+If user had any walks added, these will be displayed also in *Profile* page.
+
+>&rarr; User can edit/delete their contribution
+>
+User can see details about their own walks in *Profile* page and edit/delete if they wish to.
+
 Site owner
-&rarr; Admin can add/remove categories
+>&rarr; Admin can add/remove categories
+>
+Admin can add/edit or remove Categories.
 
 # 5. Bugs
 -   When clicking on nav logo the user is redirected to *Walks* page
     - Bug has been fixed by changing the url.
+- When editind a walk and clicking on *Submit* the walk will not update
+    - Bug was fixed by replacing the anchor tag on "*edit_walk.html*" with a submit button.
