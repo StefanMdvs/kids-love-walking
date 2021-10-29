@@ -4,7 +4,7 @@
 **[Live demo](https://kids-love-walking.herokuapp.com/get_walks)**
 
 ---
-## Index
+[## Index](#up)
 [**1. Overview**](#1-overview)  
 [**2. UX**](#2-ux)  
 - [2.1 User Stories](#21-user-stories)  
@@ -98,6 +98,7 @@ To prevent accidental deletion of walks, users are asked to confirm again before
 - [MongoDB](https://www.mongodb.com/)
 
 ## 5. Testing
+Testing details can be found [here](testing.md).
 ## 6. Deployment
 ### **Cloning Kids Love Walking**
 The project used the [Code Institute's template](https://github.com/Code-Institute-Org/gitpod-full-template) to create a GitHub repository and then all other code was created in [Gitpod](https://www.gitpod.io/) and pushed into GitHub using the Terminal and the following commands:  
@@ -150,3 +151,21 @@ The app was deployed to Heroku from its GitHub repository using the following st
 10. Go to Deploy tab and under Automatic deploys choose Enable Automatic Deploys
 11. Under Manual deploy, select master and click Deploy Branch
 12. After the app has finished building, click Open app from the header row of the dashboard.
+
+# 7. Credits
+**Tutorials**
+  - Code Institute Task Manager Project
+
+**Student Projects**
+  - [Self Isolution](https://github.com/Edb83/self-isolution)
+
+**Media**
+  - Home Page image is from [Freepik](https://www.freepik.com/free-vector/happy-active-family-walking-outdoors_7732632.htm).
+  - Default image for walks is from [Dreamstime](https://www.dreamstime.com/child-walking-nature-vector-kid-spending-time-pet-owner-canine-friendship-human-animal-holidays-summer-image151715809).
+  - Favicon image is from [Freepik](https://www.freepik.com).
+  
+  **Acknowledgements**  
+  - Spencer Barriball for his knowkedge and availability
+  - Code Institute Tutor Ed for his input with my update bug
+  - Fellow student Dan Otter for his eagle eye and spotting the error in my edit_walk page.
+  
