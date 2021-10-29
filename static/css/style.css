@@ -31,6 +31,10 @@ nav .brand-logo {
     padding: 0.5rem;
 }
 
+.btn, .btn-large, .btn-small {
+    font-family: 'Architects Daughter', cursive;
+}
+
 /*card and card image */
 .card {
     border-radius: 5%;
