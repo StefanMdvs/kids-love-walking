@@ -22,6 +22,21 @@ AGES = [
         "4-6",
         "6+"]
 
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    This handles the 404 error
+    """
+    return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def page_not_found(e):
+    """
+    This handles the internal server error
+    """
+    return render_template("500.html"), 500
+
 
 @app.route("/")
 @app.route("/home")
@@ -239,7 +254,10 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)

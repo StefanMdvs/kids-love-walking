@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content%}
+
+<h3 class="center-align green-text text-darken-3">Oups, I can't find that page</h3>
+<div class="center-align">
+
+    <p>What you were looking for is just not there.<p>
+    <a href="{{ url_for('get_walks') }}">Find a nice walk</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content%}
+
+<h3 class="center-align green-text text-darken-3">500 Internal Server Error</h3>
+<div class="center-align">
+    <a href="{{ url_for('get_walks') }}">Try Again</a>
+</div>
+
+{% endblock %}
