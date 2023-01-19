@@ -2,7 +2,7 @@
 ![mockup image](static/images/mockup.png)
 *An app where users can explore and share their own favourite walks.*
 
-**[Live demo](https://kids-love-walking.herokuapp.com/get_walks)**
+**[Live demo](https://kids-love-walking.onrender.com/home)**
 
 ---
 [**Index**](#up)  
