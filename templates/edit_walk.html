@@ -44,7 +44,7 @@
                 <select id="walk_facilities" name="walk_facilities" class="validate" multiple required>
                   <option value="" disabled>Choose facilities</option>
                     {% for facility in facilities %}
-                        {% if facility[facility.walk_facilities] == walk[walk.walk_facilities] %}
+                        {% if facility.walk_facilities in walk.walk_facilities %}
                             <option value="{{ facility.walk_facilities }}" selected>{{ facility.walk_facilities }}</option>
                             {% else %}
                             <option value="{{ facility.walk_facilities }}">{{ facility.walk_facilities }}</option>
