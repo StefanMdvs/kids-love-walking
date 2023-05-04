@@ -199,11 +199,12 @@ def delete_walk(walk_id):
 @app.route("/view_walk/<walk_id>")
 def view_walk(walk_id):
     walk = mongo.db.walks.find_one({"_id": ObjectId(walk_id)})
+    facilities = ", ".join(walk["walk_facilities"])
     user = mongo.db.users.find_one({"username": walk["shared_by"]})
     walks = mongo.db.walks.find()
 
     return render_template(
-        "view_walk.html", walk=walk, user=user, walks=walks)
+        "view_walk.html", walk=walk, user=user, walks=walks, facilities=facilities)
 
 
 @app.route("/get_categories")
